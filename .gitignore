@@ -1,0 +1,5 @@
+*.so
+build/
+chemfold.egg-info/
+__pycache__/
+*.cpp
