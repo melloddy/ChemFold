@@ -1,6 +1,6 @@
 # ChemFold
 
-ChemFold provides several methods for computing train-validation-test splits, designed for both ordinary ML and federated ML tasks involving small molecules.
+ChemFold provides several methods for computing train-validation-test splits, designed for both ordinary ML and federated ML tasks involving small molecules. Details can be found in the following publication: https://doi.org/10.1186/s13321-021-00576-2.
 Following methods are included:
 * Random split
 * Sphere exclusion clustering based split
