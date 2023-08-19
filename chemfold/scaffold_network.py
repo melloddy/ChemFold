@@ -32,9 +32,7 @@ def murcko_scaff_smiles(mol_smiles):
 def hashed_fold_scaffold(scaff, secret, nfolds = 5):
     scaff = str(scaff).encode("ASCII")
     h = sha256([scaff], secret)
-    m = hmac.new(secret, b'', hashlib.sha256)
-    m.update(scaff)
-    random.seed(m.digest(), version=2)
+    random.seed(h, version=2)
     return random.randint(0, nfolds - 1)
 
 def sha256(inputs, secret):

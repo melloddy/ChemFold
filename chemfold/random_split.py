@@ -29,11 +29,22 @@ logger.addHandler(shandler)
 
 def hashed_fold_scaffold(scaff, secret, nfolds = 5):
     scaff = str(scaff).encode("ASCII")
-    #h = sha256([scaff], secret)
-    m = hmac.new(secret, b'', hashlib.sha256)
-    m.update(scaff)
-    random.seed(m.digest(), version=2)
+    h = sha256([scaff], secret)
+    random.seed(h, version=2)
     return random.randint(0, nfolds - 1)
+
+def sha256(inputs, secret):
+    """
+    Encryption function using python's pre-installed packages HMAC and hashlib.
+    We are using SHA256 (it is equal in security to SHA512).
+    :param inputs: input strings
+    :param secret: given pharma partner key
+    :return:
+    """
+    m = hmac.new(secret, b'', hashlib.sha256)
+    for i in inputs:
+        m.update(i)
+    return m.digest()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='compute fold vectors based on Scaffolds')
